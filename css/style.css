@@ -1,0 +1,202 @@
+@charset "utf-8";
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0 auto;
+  padding: 0;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #174A3E;
+  color: #F1F4FA;
+}
+
+h2 {
+  text-align: center;
+  font-size: 3.8em;
+  margin: 0;
+  padding: 10px 0;
+}
+
+section {
+  margin: 0;
+  width: auto;
+  height: auto;
+  padding: 10px 25px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ Could have used .section1
+ or #section1 (class/id names)
+*/
+section:nth-child(1) {
+  background-color: #592549;
+}
+section:nth-child(2) {
+  background-color: #1B7D26;
+}
+section:nth-child(3) {
+  background-color: #157277;
+}
+section:nth-child(4) {
+  background-color: #4B2B67;
+}
+section:nth-child(5) {
+  background-color: #26546F;
+}
+section:nth-child(6) {
+  background-color: #78741D;
+}
+section:nth-child(7) {
+  background-color: #794516;
+}
+section:nth-child(8) {
+  background-color: #1D2C59;
+}
+section:nth-child(9) {
+  background-color: #56105E;
+}
+section:nth-child(10) {
+  background-color: #1B5451;
+}
+section:nth-child(11) {
+  background-color: #58592F;
+}
+section:nth-child(12) {
+  background-color: #743A22;
+}
+
+#main_wrapper {
+  margin: 0;
+  padding: 10px 20px 30px 20px;
+  width: 100vw - 20px;
+  display: grid;
+  grid-gap: 25px;
+  justify-items: center;
+  align-items: center;
+  background-color: #174A3E;
+}
+
+/* Always go smallest to largest screen size when making rules */
+@media screen and (max-width: 800px) {
+  #main_wrapper {
+    grid-template-columns: 100%;
+    grid-template-areas:
+                          "area1"
+                          "area2"
+                          "area3"
+                          "area4"
+                          "area5"
+                          "area6"
+                          "area7"
+                          "area8"
+                          "area9"
+                          "area10"
+                          "area11"
+                          "area12";
+  }
+
+  #section1 {
+    grid-area: area12;
+  }
+  #section2 {
+    grid-area: area11;
+  }
+  #section3 {
+    grid-area: area10;
+  }
+  #section4 {
+    grid-area: area9;
+  }
+  #section5 {
+    grid-area: area8;
+  }
+  #section6 {
+    grid-area: area7;
+  }
+  #section7 {
+    grid-area: area6;
+  }
+  #section8 {
+    grid-area: area5;
+  }
+  #section9 {
+    grid-area: area4;
+  }
+  #section10 {
+    grid-area: area3;
+  }
+  #section11 {
+    grid-area: area2;
+  }
+  #section12 {
+    grid-area: area1;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #main_wrapper {
+    grid-template-columns: repeat(2, minmax(40%, 50%));
+    grid-template-areas:
+                          ". ." /* <-- USE . TO INDICATE NON-NAMED CELLS */
+                          "full-span full-span";
+  }
+
+  section:nth-child(11) {
+    /* grid-column: 1/2 span; */
+    /* grid-row: 1/2; */
+    grid-area: full-span;
+    height: 100%;
+  }
+
+  /* #section11 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  #section12 {
+    grid-column: auto;
+    grid-row: auto;
+  } */
+}
+
+@media screen and (min-width: 1200px) {
+  #main_wrapper {
+    grid-template-columns: repeat(4, minmax(20%, 25%));
+      /* Can use names, but only one for each, two methods (start, end, start, end, end) OR (start, end, end, end, end) */
+      /* grid-template-columns: [col1-start] 25% [col1-end] 25% [col3-start] 25% [col3-end] 25% [col4-end] */
+      /* grid-template-columns: [col1-start] 25% [col1-end] 25% [col2-end] 25% [col3-end] 25% [col4-end] */
+      /* grid-template-rows: [row1-start] 1fr [row1-end] 1fr [row2-end] 1fr [row3-end] */
+      /*
+        Can use any name as long as -start & -end are used, then use the following:
+          grid-column: menu; <-- NO BRACKETS, JUST NAME
+          grid-column: menu-start/menu-end;
+            OR
+          grid-row: header; <-- ONLY BRACKETS IN DEFINITION
+          grid-row: header-start/header-end;
+        WITH
+          grid-template-columns: [menu-start] 25% [menu-end];
+            OR
+          grid-template-rows: [header-start] 1fr [header-end];
+      */
+  }
+
+  section:nth-child(11) {
+    grid-column: 2/3 span;
+    grid-row: 1/2;
+    height: 100%;
+  }
+
+  section:nth-child(12) {
+    grid-column: 1/2;
+    grid-row: 1/5 span;
+    height: 100%;
+  }
+}
